@@ -12,7 +12,6 @@ public class LuhnValidator implements ConstraintValidator<CreditCardLuhnValidato
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        {
             int sum = 0;
             boolean alternate = false;
             for (int i = value.length() - 1; i >= 0; i--) {
@@ -27,6 +26,5 @@ public class LuhnValidator implements ConstraintValidator<CreditCardLuhnValidato
                 alternate = !alternate;
             }
             return (sum % 10 == 0);
-        }
     }
 }

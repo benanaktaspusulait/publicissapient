@@ -1,1 +1,1 @@
-insert into credit_cards (id,balance,name_on_card,card_number) values (1, 0,'Benan Aktas', '4220 1523 1522 2111')
+insert into credit_cards (id,balance,name_on_card   ,card_number) values (1, 0,'Benan Aktas', '4220 1523 1522 2111')

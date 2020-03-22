@@ -17,8 +17,8 @@ import javax.validation.Valid;
 @Data
 @Slf4j
 @RestController
-@RequestMapping(Constants.API_PREFIX + "/api/creditCards")
-@Api(tags = Constants.API_PREFIX + "/api/creditCards")
+@RequestMapping(Constants.API_PREFIX + "/creditCards")
+@Api(tags = Constants.API_PREFIX + "/creditCards")
 public class CreditCardController {
 
     private CreditCardService creditCardService;
