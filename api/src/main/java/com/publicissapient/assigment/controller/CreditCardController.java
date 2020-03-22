@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -32,14 +33,21 @@ public class CreditCardController {
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid CreditCardDTO dto) {
 
-        log.debug("Create user", dto);
+        log.debug("Create a credit card", dto);
         return new ResponseEntity<>(creditCardService.save(dto), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<CreditCardDTO>> listUser(){
+    public ResponseEntity<List<CreditCardDTO>> listCreditCards(){
         return new ResponseEntity<>(creditCardService.findAll(),HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+
+        log.debug("REST funds to delete creditCard : {}", id);
+        creditCardService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

@@ -50,7 +50,7 @@ class ListCreditCardComponent extends Component {
         return (
             <div>
                 <h2 className="text-center">Credit Card Details</h2>
-                <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addCreditCard()}> Add New Credit Card</button>
+                <button className="btn btn-danger" style={{width:'150px'}} onClick={() => this.addCreditCard()}> Add New Credit Card</button>
                 <table className="table table-striped">
                     <thead>
                     <tr>
