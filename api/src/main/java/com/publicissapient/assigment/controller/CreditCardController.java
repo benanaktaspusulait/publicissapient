@@ -2,6 +2,7 @@ package com.publicissapient.assigment.controller;
 
 import com.publicissapient.assigment.model.dto.CreditCardDTO;
 import com.publicissapient.assigment.service.CreditCardService;
+import com.publicissapient.assigment.util.Constants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +16,8 @@ import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/creditCards")
-@Api(tags = "/api/creditCards")
+@RequestMapping(Constants.API_PREFIX + "/api/creditCards")
+@Api(tags = Constants.API_PREFIX + "/api/creditCards")
 public class CreditCardController {
 
     @Autowired
