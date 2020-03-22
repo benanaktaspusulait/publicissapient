@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/demo
+    username: postgres
+    password: 1234
+    platform: postgresql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc.lob.non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+    show-sql: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: TfAbLrAYgWUZV4V3ukdfB4fGvHXwsv3w
+    client-name: cache-api-redis-client
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+      fail-on-empty-beans: false
+    time-zone: UTC
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600
+
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate: INFO
+
