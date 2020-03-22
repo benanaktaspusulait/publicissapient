@@ -3,15 +3,12 @@ package com.publicissapient.assigment.validator;
 import com.publicissapient.assigment.annotation.CreditCardLuhnValidator;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
 
 @Data
 @Slf4j
 public class LuhnValidator implements ConstraintValidator<CreditCardLuhnValidator, String> {
-
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
