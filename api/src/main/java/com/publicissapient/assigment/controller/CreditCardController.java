@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Data
 @Slf4j
@@ -27,7 +28,7 @@ public class CreditCardController {
         this.creditCardService = creditCardService;
     }
 
-    @ApiOperation(value = "Add a user")
+    @ApiOperation(value = "Add a credit card")
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid CreditCardDTO dto) {
 
@@ -36,8 +37,8 @@ public class CreditCardController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getUsers(Pageable pageable) {
-        return new ResponseEntity<>(creditCardService.findAll(pageable), HttpStatus.OK);
+    public ResponseEntity<List<CreditCardDTO>> listUser(){
+        return new ResponseEntity<>(creditCardService.findAll(),HttpStatus.OK);
     }
 
 

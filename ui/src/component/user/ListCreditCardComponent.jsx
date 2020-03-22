@@ -15,16 +15,18 @@ class ListCreditCardComponent extends Component {
         this.reloadCreditCardList = this.reloadCreditCardList.bind(this);
     }
 
+    reloadCreditCardList() {
+        ApiService.fetchCreditCardsAxios().then(response => response.data)
+            .then((data) => {
+                this.setState({ creditCards: data })
+                console.log(this.state.creditCards)
+            })
+    }
+
     componentDidMount() {
         this.reloadCreditCardList();
     }
 
-    reloadCreditCardList() {
-        ApiService.fetchCreditCards()
-            .then((res) => {
-                this.setState({creditCards: res.data.result})
-            });
-    }
 
     deleteCreditCard(creditCardId) {
         ApiService.deleteCreditCard(creditCardId)
@@ -32,7 +34,6 @@ class ListCreditCardComponent extends Component {
                this.setState({message : 'CreditCard deleted successfully.'});
                this.setState({creditCards: this.state.creditCards.filter(creditCard => creditCard.id !== creditCardId)});
            })
-
     }
 
     editCreditCard(id) {
@@ -52,30 +53,31 @@ class ListCreditCardComponent extends Component {
                 <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addCreditCard()}> Add New Credit Card</button>
                 <table className="table table-striped">
                     <thead>
-                        <tr>
-                            <th className="hidden">Id</th>
-                            <th>Name</th>
-                            <th>Balance</th>
-                            <th>Card Number</th>
-                        </tr>
+                    <tr>
+                        <th className="hidden">Id</th>
+                        <th>NameOnCard</th>
+                        <th>Balance</th>
+                        <th>Card Number</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {
-                            this.state.creditCards.map(
-                        creditCard =>
-                                    <tr key={creditCard.id}>
-                                        <td>{creditCard.name}</td>
-                                        <td>{creditCard.balance}</td>
-                                        <td>{creditCard.cardNumber}</td>
-                                        <td>
-                                            <button className="btn btn-success" onClick={() => this.deleteCreditCard(creditCard.id)}> Delete</button>
-                                            <button className="btn btn-success" onClick={() => this.editCreditCard(creditCard.id)} style={{marginLeft: '20px'}}> Edit</button>
-                                        </td>
-                                    </tr>
-                            )
-                        }
+                    {
+                        this.state.creditCards.map(
+                            creditCard =>
+                                <tr key={creditCard.id}>
+                                    <td>{creditCard.nameOnCard}</td>
+                                    <td>{creditCard.balance}</td>
+                                    <td>{creditCard.cardNumber}</td>
+                                    <td>
+                                        <button className="btn btn-success" onClick={() => this.deleteCreditCard(creditCard.id)}> Delete</button>
+                                        <button className="btn btn-success" onClick={() => this.editCreditCard(creditCard.id)} style={{marginLeft: '20px'}}> Edit</button>
+                                    </td>
+                                </tr>
+                        )
+                    }
                     </tbody>
                 </table>
+
 
             </div>
         );

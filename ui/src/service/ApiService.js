@@ -7,7 +7,10 @@ const API_BASE_URL = 'http://localhost:8080/api/v1/';
 class ApiService {
 
     fetchCreditCards() {
-        return axios.get(API_BASE_URL + CREDIT_CARDS);
+        return  fetch(API_BASE_URL + CREDIT_CARDS);
+    }
+    fetchCreditCardsAxios() {
+        return  axios.get(API_BASE_URL + CREDIT_CARDS);
     }
 
     fetchCreditCardById(creditCardId) {

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class CreditCardDTO extends BaseDTO {
 
     private Long id;
-    private @NotNull String name;
+    private @NotNull String nameOnCard;
     private @NotNull BigDecimal balance;
 
     private @NotNull

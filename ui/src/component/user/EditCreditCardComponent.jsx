@@ -6,7 +6,7 @@ class EditCreditCardComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            nameOnCard: '',
             balance: '',
             cardNumber: ''
         }
@@ -25,7 +25,7 @@ class EditCreditCardComponent extends Component {
                 let creditCard = res.data.result;
                 this.setState({
                     id: creditCard.id,
-                    name: creditCard.name,
+                    nameOnCard: creditCard.nameOnCard,
                     balance: creditCard.balance,
                     cardNumber: creditCard.cardNumber,
                 })
@@ -39,7 +39,7 @@ class EditCreditCardComponent extends Component {
         e.preventDefault();
         let creditCard = {
             id: this.state.id,
-            name: this.state.name,
+            nameOnCard: this.state.nameOnCard,
             balance: this.state.balance,
             cardNumber: this.state.cardNumber
         };
@@ -58,8 +58,8 @@ class EditCreditCardComponent extends Component {
 
                     <div className="form-group">
                         <label>Name On CreditCard :</label>
-                        <input type="text" placeholder="creditCardname" name="creditCardname" className="form-control"
-                               readonly="true" defaultValue={this.state.name}/>
+                        <input type="text" placeholder="creditCardname" name="nameOnCard" className="form-control"
+                               readonly="true" defaultValue={this.state.nameOnCard}/>
                     </div>
 
                     <div className="form-group">

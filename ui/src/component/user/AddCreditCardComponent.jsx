@@ -6,7 +6,7 @@ class AddCreditCardComponent extends Component{
     constructor(props){
         super(props);
         this.state ={
-            name: '',
+            nameOnCard: '',
             balance: '',
             cardNumber: ''
         }
@@ -15,7 +15,7 @@ class AddCreditCardComponent extends Component{
 
     saveCreditCard = (e) => {
         e.preventDefault();
-        let creditCard = {name: this.state.name, balance: this.state.balance, cardNumber: this.state.cardNumber};
+        let creditCard = {nameOnCard: this.state.nameOnCard, balance: this.state.balance, cardNumber: this.state.cardNumber};
         ApiService.addCreditCard(creditCard)
             .then(res => {
                 this.setState({message : 'CreditCard added successfully.'});
@@ -33,7 +33,7 @@ class AddCreditCardComponent extends Component{
                 <form>
                 <div className="form-group">
                     <label>Card On Name:</label>
-                    <input type="text" placeholder="name" name="name" className="form-control" value={this.state.name} onChange={this.onChange}/>
+                    <input type="text" placeholder="name" name="nameOnCard" className="form-control" value={this.state.nameOnCard} onChange={this.onChange}/>
                 </div>
 
 
