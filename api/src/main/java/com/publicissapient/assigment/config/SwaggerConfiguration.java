@@ -36,21 +36,10 @@ public class SwaggerConfiguration {
     //    @Value("${host.full.dns.auth.link}")
     private String authLink = "http://localhost:8080";
 
-    @Bean
-    public Docket apiDocket1() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("admin")
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/api/admin/**"))
-                .build()
-                .apiInfo(getApiInfo())
-                .securitySchemes(Collections.singletonList(new ApiKey("Authorization", "Authorization", "header")))
-                .useDefaultResponseMessages(false);
-    }
+
 
     @Bean
-    public Docket apiDocket2() {
+    public Docket apiDocket1() {
 
         List<ResponseMessage> list = new ArrayList<>();
         list.add(new ResponseMessageBuilder().code(500).message("500 message")
@@ -61,9 +50,8 @@ public class SwaggerConfiguration {
                 .responseModel(new ModelRef("Result")).build());
 
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("orders")
-                .tags(new Tag("orders", "orders related"),
-                         new Tag("screenMessages", "screenMessages related"))
+                .groupName("creditCards")
+                .tags(new Tag("creditCards", "creditCards related"))
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.ant("/api/v1/**"))
