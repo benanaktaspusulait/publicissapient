@@ -17,7 +17,7 @@ spring:
     properties:
       hibernate:
         jdbc.lob.non_contextual_creation: true
-        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        dialect: org.hibernate.dialect.H2Dialect
     show-sql: true
     database: h2
   main:
