@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
-@Table(name = "CREDITCARDS")
+@Table(name = "CREDIT_CARDS")
 @ToString
-public class CreditCard extends BaseEntity implements   Serializable {
+public class CreditCard extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

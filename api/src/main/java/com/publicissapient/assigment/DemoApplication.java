@@ -18,9 +18,9 @@ import java.util.TimeZone;
 
 @Slf4j
 @SpringBootApplication
-@EntityScan(basePackages = {"com.ttgint.demo.model", "com.ttgint.demo.model.repository"},
+@EntityScan(basePackages = {"com.publicissapient.assigment.model", "com.publicissapient.assigment.repository"},
         basePackageClasses = Jsr310Converters.class)
-@EnableJpaRepositories(basePackages = {"com.ttgint.demo.model", "com.ttgint.demo.repository"})
+@EnableJpaRepositories(basePackages = {"com.publicissapient.assigment.model", "com.publicissapient.assigment.repository"})
 public class DemoApplication {
 
     public static void main(String[] args) throws UnknownHostException {
