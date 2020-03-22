@@ -4,9 +4,14 @@ import com.publicissapient.assigment.mapper.CreditCardMapper;
 import com.publicissapient.assigment.model.CreditCard;
 import com.publicissapient.assigment.model.dto.CreditCardDTO;
 import com.publicissapient.assigment.repository.CreditCardRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
+@Slf4j
 @Service
 public class CreditCardService {
 
@@ -16,13 +21,13 @@ public class CreditCardService {
     @Autowired
     private CreditCardMapper creditCardMapper;
 
-    public CreditCardDTO findOne(Long id) {
 
-        return creditCardMapper.toDto(creditCardRepository.getOne(id));
+    public CreditCard save(CreditCardDTO dto) {
+        return creditCardRepository.save(creditCardMapper.toEntity(dto));
     }
 
-    public CreditCard save(CreditCard creditCard) {
-        return creditCardRepository.save(creditCard);
+    public Page<CreditCardDTO> findAll(Pageable pageable) {
+        return creditCardRepository.findAll(pageable).map(creditCard -> creditCardMapper.toDto(creditCard));
     }
 
 }
