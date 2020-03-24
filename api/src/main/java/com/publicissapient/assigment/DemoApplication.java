@@ -16,6 +16,9 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.TimeZone;
 
+/**
+ * to run application
+ */
 @Slf4j
 @SpringBootApplication
 @EntityScan(basePackages = {"com.publicissapient.assigment.model", "com.publicissapient.assigment.repository"},

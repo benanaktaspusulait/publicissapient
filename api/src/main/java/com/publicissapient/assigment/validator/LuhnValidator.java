@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * validator for credit card
+ */
 @Data
 @Slf4j
 public class LuhnValidator implements ConstraintValidator<CreditCardLuhnValidator, String> {

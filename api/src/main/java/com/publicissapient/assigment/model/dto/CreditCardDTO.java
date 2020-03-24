@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+/**
+ * dto for credit card
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

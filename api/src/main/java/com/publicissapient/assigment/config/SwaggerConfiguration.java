@@ -21,7 +21,6 @@ import java.util.*;
 @Slf4j
 @Configuration
 @EnableSwagger2
-//@Profile({"test", "dev", "local"})
 public class SwaggerConfiguration {
 
     //    @Value("${app.client.id}")
@@ -60,12 +59,7 @@ public class SwaggerConfiguration {
                 .securityContexts(Collections.singletonList(securityContext()))
                 .pathMapping("/")
                 .useDefaultResponseMessages(false)
-                .apiInfo(getApiInfo())
-//                .globalResponseMessage(RequestMethod.GET, list)
-//                .globalResponseMessage(RequestMethod.POST, list)
-//                .globalResponseMessage(RequestMethod.PATCH, list)
-//                .globalResponseMessage(RequestMethod.DELETE, list)
-                ;
+                .apiInfo(getApiInfo());
     }
 
     private OAuth securitySchema() {

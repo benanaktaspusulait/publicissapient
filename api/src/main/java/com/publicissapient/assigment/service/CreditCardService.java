@@ -5,25 +5,25 @@ import com.publicissapient.assigment.model.CreditCard;
 import com.publicissapient.assigment.model.dto.CreditCardDTO;
 import com.publicissapient.assigment.repository.CreditCardRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/**
+ * all service operations for credit card
+ */
 @Slf4j
 @Service
 public class CreditCardService {
 
-    @Autowired
     private CreditCardRepository creditCardRepository;
-
-    @Autowired
     private CreditCardMapper creditCardMapper;
+
+    public CreditCardService(CreditCardRepository creditCardRepository) {
+        this.creditCardRepository = creditCardRepository;
+    }
 
     public CreditCard save(CreditCardDTO dto) {
         return creditCardRepository.save(creditCardMapper.toEntity(dto));

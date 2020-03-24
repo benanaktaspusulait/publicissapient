@@ -35,6 +35,7 @@ public class CreditCardControllerTest extends AbstractControllerTest {
         this.mockMvc.perform(get(Constants.API_PREFIX + ConstantsTest.URL_CREDIT_CARDS))
                 .andDo(print())
                 .andExpect(status().isOk());
+
     }
 
     @Test

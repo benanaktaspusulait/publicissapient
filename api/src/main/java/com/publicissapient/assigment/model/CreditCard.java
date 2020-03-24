@@ -8,7 +8,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
+/**
+ * entity for credit card
+ */
 @Data
 @Entity
 @Table(name = "CREDIT_CARDS")
