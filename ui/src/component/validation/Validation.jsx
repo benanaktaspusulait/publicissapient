@@ -66,30 +66,6 @@ export function validateComponent(obj) {
     return {valid: isValid, error: error};
 }
 
-
-function checkValid(messages) {
-    let valid = true;
-    for (var message in messages) {
-        if (messages[message] !== '') {
-            return false;
-        }
-    }
-    return valid;
-}
-
-function objectRulesControl(rules, value, label) {
-    let result = {state: true, message: ''};
-    for (var rule in rules) {
-        let ruleKey = rule;
-        let ruleValue = rules[rule];
-        result = getValidationResult(ruleKey, ruleValue, value, label);
-        if (!result.state) {
-            return result;
-        }
-    }
-    return result;
-}
-
 export function getValidationResult(ruleKey, ruleValue, value, label) {
     let result = {valid: true, message: ''};
     switch (ruleKey) {

@@ -106,9 +106,8 @@ class AddCreditCardComponent extends Component {
                                    id="nameOnCard"
                                    placeholder="please write name on card"
                                    data-vlength="5,30"
-                                   onBlur={this.validateField}
                                    ref="nameOnCard"
-                                   inputProps={{vdata: "credit_card"}}
+                                   onBlur={this.validateField}
                                    value={this.state.creditCard.nameOnCard}
                                    onChange={(e) => this.onChange(e)}
                                    maxLength="30"
@@ -136,13 +135,17 @@ class AddCreditCardComponent extends Component {
                                    required={true}
                                    name="balance"
                                    className="form-control"
-                                   onBlur={this.validateField}
                                    ref="balance"
                                    value={this.state.creditCard.balance}
-                                   maxLength="8"
                                    onChange={(e) => this.onChange(e)}
-                                   data-vlength="1,8"
                                    minLength="1"
+                                   onBlur={() => this.validateField({
+                                       target: {
+                                           id: "balance",
+                                           dataset: {vdata: "decimal"},
+                                           value: this.state.creditCard.balance
+                                       }
+                                   })}
                             />
                             <UncontrolledTooltip placement="right" target="balance" delay={0}>
                                 {this.validateMessage("balance")}
@@ -166,13 +169,17 @@ class AddCreditCardComponent extends Component {
                                    required={true}
                                    name="cardNumber"
                                    className="form-control"
-                                   onBlur={this.validateField}
                                    ref="cardNumber"
                                    value={this.state.creditCard.cardNumber}
                                    maxLength="19"
                                    onChange={(e) => this.onChange(e)}
-                                   data-vlength="15,19"
-                                   minLength="15"
+                                   onBlur={() => this.validateField({
+                                       target: {
+                                           id: "cardNumber",
+                                           dataset: {vdata: "credit_card"},
+                                           value: this.state.creditCard.cardNumber
+                                       }
+                                   })}
                             />
                             <UncontrolledTooltip placement="right" target="cardNumber" delay={0}>
                                 {this.validateMessage("cardNumber")}
