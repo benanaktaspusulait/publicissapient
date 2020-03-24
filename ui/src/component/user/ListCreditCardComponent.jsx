@@ -26,8 +26,6 @@ class ListCreditCardComponent extends Component {
     componentDidMount() {
         this.reloadCreditCardList();
     }
-
-
     deleteCreditCard(creditCardId) {
         ApiService.deleteCreditCard(creditCardId)
            .then(res => {
@@ -35,17 +33,14 @@ class ListCreditCardComponent extends Component {
                this.setState({creditCards: this.state.creditCards.filter(creditCard => creditCard.id !== creditCardId)});
            })
     }
-
     editCreditCard(id) {
         window.localStorage.setItem("creditCardId", id);
         this.props.history.push('/edit-creditCard');
     }
-
     addCreditCard() {
         window.localStorage.removeItem("creditCardId");
         this.props.history.push('/add-creditCard');
     }
-
     render() {
         return (
             <div>
@@ -77,12 +72,8 @@ class ListCreditCardComponent extends Component {
                     }
                     </tbody>
                 </table>
-
-
             </div>
         );
     }
-
 }
-
 export default ListCreditCardComponent;
