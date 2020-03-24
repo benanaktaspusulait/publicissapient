@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ListCreditCardComponent from "./component/user/ListCreditCardComponent";
 import AddCreditCardComponent from "./component/user/AddCreditCardComponent";
-import EditCreditCardComponent from "./component/user/EditCreditCardComponent";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
                       <Route path="/" exact component={ListCreditCardComponent} />
                       <Route path="/creditcards" component={ListCreditCardComponent} />
                       <Route path="/add-creditcard" component={AddCreditCardComponent} />
-                      <Route path="/edit-creditcard" component={EditCreditCardComponent} />
                   </Switch>
               </div>
           </Router>

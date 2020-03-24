@@ -37,8 +37,6 @@ export function validateComponent(obj) {
     var isValid = true;
     for (var key in refs) {
         var ref = refs[key];
-
-        // SELECT MENU, DATA'YI PROPS ALTINDA TUTUYOR
         if (ref.props) {
             let rule = null;
             let boundary = null;
@@ -69,15 +67,6 @@ export function validateComponent(obj) {
 }
 
 
-export function validate(fieldName, value, rules, messages, label) {
-    let result = objectRulesControl(rules[fieldName], value, label);
-    messages[fieldName] = result.message;
-    return {
-        messages: messages,
-        valid: checkValid(messages)
-    }
-}
-
 function checkValid(messages) {
     let valid = true;
     for (var message in messages) {
@@ -101,17 +90,12 @@ function objectRulesControl(rules, value, label) {
     return result;
 }
 
-
-export function validateCustom(booleanExpression, message) {
-    return {valid: booleanExpression, message: (booleanExpression ? '' : message)};
-}
-
 export function getValidationResult(ruleKey, ruleValue, value, label) {
     let result = {valid: true, message: ''};
     switch (ruleKey) {
         case 'required':
             result.valid = (ruleValue === false ? true : (!validator.isEmpty(value)));
-            result.message = result.valid === true ? '' : `${label} alanı zorunludur.`;
+            result.message = result.valid === true ? '' : `${label} is required.`;
             break;
         case 'maxLength':
             result.valid = validator.isLength(value, {max: ruleValue});
@@ -121,9 +105,34 @@ export function getValidationResult(ruleKey, ruleValue, value, label) {
             result.valid = ruleValue === false ? true : validator.isDecimal(value);
             result.message = result.valid === true ? '' : label + ' invalid number format.';
             break;
+        case 'credit_card':
+            result.valid = ruleValue === false ? true : valid_credit_card(value);
+            result.message = result.valid === true ? '' : label + ' invalid credit card number.';
+            break;
         default:
             result = {valid: true, message: ''};
     }
     return result;
 }
 
+
+function valid_credit_card(value) {
+    // Accept only digits, dashes or spaces
+    if (/[^0-9-\s]+/.test(value)) return false;
+
+    // The Luhn Algorithm. It's so pretty.
+    let nCheck = 0, bEven = false;
+    value = value.replace(/\D/g, "");
+
+    for (var n = value.length - 1; n >= 0; n--) {
+        var cDigit = value.charAt(n),
+            nDigit = parseInt(cDigit, 10);
+
+        if (bEven && (nDigit *= 2) > 9) nDigit -= 9;
+
+        nCheck += nDigit;
+        bEven = !bEven;
+    }
+
+    return (nCheck % 10) === 0;
+}

@@ -10,7 +10,6 @@ class ListCreditCardComponent extends Component {
             message: null
         }
         this.deleteCreditCard = this.deleteCreditCard.bind(this);
-        this.editCreditCard = this.editCreditCard.bind(this);
         this.addCreditCard = this.addCreditCard.bind(this);
         this.reloadCreditCardList = this.reloadCreditCardList.bind(this);
     }
@@ -32,10 +31,6 @@ class ListCreditCardComponent extends Component {
                this.setState({message : 'CreditCard deleted successfully.'});
                this.setState({creditCards: this.state.creditCards.filter(creditCard => creditCard.id !== creditCardId)});
            })
-    }
-    editCreditCard(id) {
-        window.localStorage.setItem("creditCardId", id);
-        this.props.history.push('/edit-creditCard');
     }
     addCreditCard() {
         window.localStorage.removeItem("creditCardId");
@@ -65,7 +60,6 @@ class ListCreditCardComponent extends Component {
                                     <td>{creditCard.cardNumber}</td>
                                     <td>
                                         <button className="btn btn-success" onClick={() => this.deleteCreditCard(creditCard.id)}> Delete</button>
-                                        <button className="btn btn-success" onClick={() => this.editCreditCard(creditCard.id)} style={{marginLeft: '20px'}}> Edit</button>
                                     </td>
                                 </tr>
                         )
